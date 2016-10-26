@@ -139,6 +139,7 @@ namespace cv {
                             //    sum++;
                             //}
                             if (learningStage >= 0 || cache->weight > selectThreshold) keys[neuron] = wram_up_key_down_rest(discr[neuron], cache->tuple[neuron],trainIncr,trainDecr,varUpWatermark);
+                            if (learningStage < 0) cout << "Hello" << endl;
                         }
                         
                         // update output mask
