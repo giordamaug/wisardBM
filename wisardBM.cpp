@@ -166,15 +166,15 @@ int main(int argc, char** argv) {
 
     // Timing globs
     double fps, rfps, mfps=-2;
-    struct timeval t1, t2;
+    struct timeval t0, t1, t2;
     
     // Set Command Line Parser
     CmdLine cmd("CD Wisard - command description message", ' ', "1.0");
     SwitchArg verboseSwitch("v", "verbose", "show configuration", false);
+    SwitchArg displaySwitch("x", "display", "enable gui display (disabled)", false);
     ValueArg<string> inputdirArg("d", "inputdir", "Input video folder", true, "", "directory");
-    ValueArg<string> outputdirArg("o", "outputdir", "Output folder", false, "", "directory");
     ValueArg<string> gtfileArg("g", "gtfile", "GT file name", false, "", "filename");
-    ValueArg<string> bgdirArg("O", "bgdir", "BG Output folder", false, "", "directory");
+    ValueArg<string> bgfileArg("o", "bgfile", "BG output file name", false, "RESULT_background.jpg", "filename");
     ValueArg<string> colorcodingArg("m", "colorcode", "Color conding (Lab)", false, "RGB", "string");
     ValueArg<int> nbitArg("b","nbit","bit resolution (4)",false,4,"bitno");
     ValueArg<int> ticsArg("n","tics","tics in color scale (256)",false,256,"ticsno");
@@ -187,13 +187,13 @@ int main(int argc, char** argv) {
     SwitchArg reverseSwitch("R", "reverse", "reverse mode (diasbled)", false);
     //ValueArg<double> threshArg("t", "threshold", "classification threshold (0.75)", false, 0.75,"threshold");
     SwitchArg blurFlag("B", "blur", "enable blur (disabled)", false);
-    ValueArg<string> extArg("x", "extension", "image extension (jpg)", false, "jpg", "extension");
+    ValueArg<string> extArg("e", "extension", "image extension (jpg)", false, "jpg", "extension");
     cmd.add(verboseSwitch);
+    cmd.add(displaySwitch);
     cmd.add(reverseSwitch);
     cmd.add(inputdirArg);
-    cmd.add(outputdirArg);
     cmd.add(gtfileArg);
-    cmd.add(bgdirArg);
+    cmd.add(bgfileArg);
     cmd.add(colorcodingArg);
     cmd.add(nbitArg);
     cmd.add(ticsArg);
@@ -231,17 +231,9 @@ int main(int argc, char** argv) {
         cerr << string(13, ' ') << "window setting must be <int>:<int>" << endl;
         exit(-1);
     }
-    if (outputdirArg.isSet()) {
-        outdirname = outputdirArg.getValue();
-        if ((op = opendir (outdirname.c_str())) == NULL) {
-            cout << "Warn: Could not open output dir" << endl;
-        } else outflag = true;
-    }
-    if (bgdirArg.isSet()) {
-        bgoutdirname = bgdirArg.getValue();
-        if ((op = opendir (bgoutdirname.c_str())) == NULL) {
-            cout << "Warn: Could not open BG output dir" << endl;
-        } else bgoutflag = true;
+    if (bgfileArg.isSet()) {
+        bgoutfilename = bgfileArg.getValue();
+        bgoutflag = true;
     }
     string coding;
     if (colorcodingArg.isSet()) {
@@ -318,13 +310,15 @@ int main(int argc, char** argv) {
     Mat outFrame(h+2*hskip+wskip,w*dcols+(dcols+1)*wskip,CV_8UC3,bgcolor);
     
     // create window an put icons
-    cvNamedWindow(WinTitle.c_str(),CV_WINDOW_AUTOSIZE);
+    if (displaySwitch.isSet()) cvNamedWindow(WinTitle.c_str(),CV_WINDOW_AUTOSIZE);
     
     int cnt = 0;
     // video processing loop
     int plus = 1;
     
+    gettimeofday(&t0,NULL);
     while (frameidx >= 0 and frameidx < dcnt) {
+	cout << fram
         gettimeofday(&t1,NULL);
         frame_orig = imread(indirname + "/" + dlist[frameidx]);  //get one frame form video
         if(! frame_orig.data ) {
@@ -339,26 +333,30 @@ int main(int argc, char** argv) {
         
         if (waitKey(30) >= 0)
             break;
-        gettimeofday(&t2,NULL);
-        rfps = (int)(1.0 / ((double) (t2.tv_usec - t1.tv_usec)/1000000 + (double) (t2.tv_sec - t1.tv_sec)));
         if (mfps != rfps && frameidx % 5 == 0) mfps = rfps;
         
         // difference by luminance (Ycrcb)
         backconvert(frame,frame);
         backconvert(bgmodel, bgmodel);
 
-        outFrame.setTo(bgcolor);
-        
-        imglist.clear();
-        titlelist.clear();
-        imglist.push_back(make_pair(frame_orig,Rect(Point(wskip,hskip-2),Size(w,h))));  // original frame (Up left)
-        titlelist.push_back(make_pair(titleupleft + format("%05d",frameidx),Point(wskip,hskip-5)));
-        imglist.push_back(make_pair(bgmodel,Rect(Point(wskip*2+w,hskip-2),Size(w,h))));  // bgmodel (Up right)
-        titlelist.push_back(make_pair(titleupright,Point(wskip*2+w,hskip-5)));
-        showImages(outFrame, imglist, titlelist);
+        if (displaySwitch.isSet()) {
+		outFrame.setTo(bgcolor);
+        	imglist.clear();
+        	titlelist.clear();
+        	imglist.push_back(make_pair(frame_orig,Rect(Point(wskip,hskip-2),Size(w,h))));  // original frame (Up left)
+        	titlelist.push_back(make_pair(titleupleft + format("%05d",frameidx),Point(wskip,hskip-5)));
+        	imglist.push_back(make_pair(bgmodel,Rect(Point(wskip*2+w,hskip-2),Size(w,h))));  // bgmodel (Up right)
+        	titlelist.push_back(make_pair(titleupright,Point(wskip*2+w,hskip-5)));
+        	showImages(outFrame, imglist, titlelist);
+	}
         if (outflag) imwrite(outdirname + format("/out_%06d.png",frameidx), outFrame);
         frameidx += plus;
         if (reverseSwitch.isSet() and frameidx == dcnt) { plus = -1; frameidx--; frameidx--; };  // reverse
+        gettimeofday(&t2,NULL);
+        rfps = (int)(1.0 / ((double) (t2.tv_usec - t1.tv_usec)/1000000 + (double) (t2.tv_sec - t1.tv_sec)));
+        cout << '\r' << "Processing Frame " << std::setfill('0') << frameidx << "/" << dcnt << std::flush;
     }
-    if (bgoutflag) imwrite(bgoutdirname + format("/BC_%s.png",videoname.c_str()), bgmodel);
+    // Print timing statistics and BG
+    cout << "\nProcessed at " << rfps << " FPS - Total time " << (t2.tv_sec - t0.tv_sec) << " sec"<< endl;
+    if (bgoutflag) imwrite(bgoutfilename, bgmodel);
 }
