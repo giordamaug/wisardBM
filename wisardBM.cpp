@@ -12,7 +12,7 @@ char buffer[1024];
 // getTextSizestring 
 const string WinTitle = "CD Wisard (V.1.0)";
 // url
-string CamUrl, VideoUrl;
+string VideoUrl;
 
 // Colors
 Scalar bgcolor = Scalar(106,117,181);
@@ -182,8 +182,6 @@ int main(int argc, char** argv) {
     ValueArg<string> policyArg("p", "policy", "train policy (+1, -1)", false, "1:1","int:int");
     ValueArg<double> watermarkArg("w", "watermark", "bleaching threshold (0)", false, 0.0,"threshold");
     ValueArg<double> uppermarkArg("u", "uppermark", "upper mark for ram contents (50)", false, 50.0,"size");
-    ValueArg<double> selectArg("y", "select", "selection threshold (3)", false, 3,"size");
-    ValueArg<int> learnArg("l", "learn", "learning boots time (0)", false, 0,"size");
     SwitchArg reverseSwitch("R", "reverse", "reverse mode (diasbled)", false);
     //ValueArg<double> threshArg("t", "threshold", "classification threshold (0.75)", false, 0.75,"threshold");
     SwitchArg blurFlag("B", "blur", "enable blur (disabled)", false);
@@ -201,8 +199,6 @@ int main(int argc, char** argv) {
     cmd.add(policyArg);
     cmd.add(watermarkArg);
     cmd.add(uppermarkArg);
-    cmd.add(learnArg);
-    cmd.add(selectArg);
     //cmd.add(threshArg);
     cmd.add(blurFlag);
     cmd.add(extArg);
@@ -285,7 +281,6 @@ int main(int argc, char** argv) {
     Subtractor->set("varWatermark", watermarkArg.getValue());
     //Subtractor->set("varThreshold", threshArg.getValue());
     Subtractor->set("varUpWatermark", uppermarkArg.getValue());
-    Subtractor->set("selectThreshold", selectArg.getValue());
     Subtractor->set("learningStage", learnArg.getValue());
     Subtractor->initialize(frame.size(), frame.type());
     //*/
