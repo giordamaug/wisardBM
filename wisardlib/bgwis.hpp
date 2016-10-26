@@ -37,8 +37,6 @@ namespace cv {
         CV_WRAP virtual void setVarWatermark(double mark) = 0;
         CV_WRAP virtual double getVarUpWatermark() const = 0;
         CV_WRAP virtual void setVarUpWatermark(double mark) = 0;
-        CV_WRAP virtual int getSelectThreshold() const = 0;
-        CV_WRAP virtual void setSelectThreshold(int thr) = 0;
         CV_WRAP virtual int getLearningStage() const = 0;
         CV_WRAP virtual void setLearningStage(int size) = 0;
         CV_WRAP virtual int getDimTics() const = 0;
