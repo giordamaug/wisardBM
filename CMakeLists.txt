@@ -20,7 +20,7 @@ endif()
 # Build wizard Library
 # Build bemis program
 set(BGWIZSRC_NAME wisardlib/bgwis.cpp)
-set(MAINSRC_NAME bewis.cpp)
+set(MAINSRC_NAME wisardBM.cpp)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ./wisardlib)
 
 set(LIB_NAME wisard)
