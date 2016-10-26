@@ -368,7 +368,6 @@ int main(int argc, char** argv) {
         imglist.push_back(make_pair(bgmodel,Rect(Point(wskip*2+w,hskip-2),Size(w,h))));  // bgmodel (Up right)
         titlelist.push_back(make_pair(titleupright,Point(wskip*2+w,hskip-5)));
         showImages(outFrame, imglist, titlelist);
-        //if (outflag) imwrite(outdirname + format("/BC_%06d.png",frameidx), bgmodel);
         if (outflag) imwrite(outdirname + format("/out_%06d.png",frameidx), outFrame);
         frameidx += plus;
         if (reverseSwitch.isSet() and frameidx == dcnt) { plus = -1; frameidx--; frameidx--; };  // reverse
