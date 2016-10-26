@@ -1,3 +1,11 @@
+//
+//  wisardBM.hpp
+//  
+//
+//  Created by Maurizio Giordano on 25/05/15.
+//
+//
+
 #include <wisardBM.hpp>
 
 char buffer[1024];
