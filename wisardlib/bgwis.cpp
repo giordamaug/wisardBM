@@ -1,6 +1,6 @@
 
 //
-// Change Detection based on Wisard 1.0
+// Background Modeler based on Wisard 1.0
 //
 // Created by Maurizio Giordano
 // Copyright 2015
@@ -166,7 +166,7 @@ namespace cv {
                 cout << left << setw(fldsize) << setfill(' ') << "noTics: " << noTics << "(" << dimTics << ")" << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "noRams: " << noRams <<  endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Train Policy: " << trainIncr << ":" << trainDecr <<  endl;
-                cout << left << setw(fldsize) << setfill(' ') << "Classification Thresh: " << varThreshold << endl;
+                //cout << left << setw(fldsize) << setfill(' ') << "Classification Thresh: " << varThreshold << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Selection Thresh: " << selectThreshold << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Watermark: " << varWatermark << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Uppermark: " << varUpWatermark << endl;
