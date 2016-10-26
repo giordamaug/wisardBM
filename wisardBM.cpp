@@ -284,6 +284,7 @@ int main(int argc, char** argv) {
 
     ///*
     Ptr<BackgroundSubtractorWIS> Subtractor;
+    Subtractor = createBackgroundSubtractorWIS();
     Subtractor->set("noBits", nbitArg.getValue());
     Subtractor->set("noTics", ticsArg.getValue());
     Subtractor->set("trainIncr", incr);
