@@ -138,8 +138,7 @@ namespace cv {
                             //if (wram_get(discr[neuron],cache->tuple[neuron]) > varWatermark) {
                             //    sum++;
                             //}
-                            if (learningStage >= 0 || cache->weight > selectThreshold) keys[neuron] = wram_up_key_down_rest(discr[neuron], cache->tuple[neuron],trainIncr,trainDecr,varUpWatermark);
-                            if (learningStage < 0) cout << "Hello" << endl;
+                            keys[neuron] = wram_up_key_down_rest(discr[neuron], cache->tuple[neuron],trainIncr,trainDecr,varUpWatermark);
                         }
                         
                         // update output mask
@@ -151,9 +150,6 @@ namespace cv {
                         updateMaxColor(color,keys,fgdata++,fgdata++,fgdata++);  // update bgmodel in all pixels
                         
                     }
-                }
-                if (learningStage > 0) {
-                    learningStage--;
                 }
                 fgmask.copyTo(_fgmask);
             }
@@ -168,7 +164,6 @@ namespace cv {
                 cout << left << setw(fldsize) << setfill(' ') << "noRams: " << noRams <<  endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Train Policy: " << trainIncr << ":" << trainDecr <<  endl;
                 //cout << left << setw(fldsize) << setfill(' ') << "Classification Thresh: " << varThreshold << endl;
-                cout << left << setw(fldsize) << setfill(' ') << "Selection Thresh: " << selectThreshold << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Watermark: " << varWatermark << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Uppermark: " << varUpWatermark << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "LearningStage: " << learningStage << endl;
@@ -224,8 +219,6 @@ namespace cv {
             virtual void setVarWatermark(double _mark) { varWatermark = _mark; }
             virtual double getVarUpWatermark() const { return varUpWatermark; };
             virtual void setVarUpWatermark(double _mark) { varUpWatermark = _mark; }
-            virtual int getSelectThreshold() const { return selectThreshold; };
-            virtual void setSelectThreshold(int _selthr) { selectThreshold = _selthr; }
             virtual int getLearningStage() const { return learningStage; };
             virtual void setLearningStage(int _lsize) { learningStage = _lsize; }
             virtual int getDimTics() const { return dimTics; };
@@ -233,7 +226,6 @@ namespace cv {
                 if (name == "noBits") setNoBits(value);
                 else if (name == "noTics") setNoTics(value);
                 else if (name == "cacheSize") setCacheSize(value);
-                else if (name == "selectThreshold") setSelectThreshold(value);
                 else if (name == "learningStage") setLearningStage(value);
             } ;
             void set(const String& name, double value) {
@@ -249,7 +241,6 @@ namespace cv {
                 else if (name == "noRams") getNoRams();
                 else if (name == "dimTics") getDimTics();
                 else if (name == "cacheSize") getCacheSize();
-                else if (name == "selectThreshold") getSelectThreshold();
                 else if (name == "learningStage") getLearningStage();
             } ;
             double getDouble(const String& name) {
