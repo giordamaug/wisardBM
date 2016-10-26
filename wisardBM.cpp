@@ -143,7 +143,7 @@ int main(int argc, char** argv) {
     vector<string> dlist = vector<string>();
     string indirname;
     string outdirname;
-    string bgoutdirname;
+    string bgoutfilename;
     string videoname;
     string gtfilename;
     int incr, decr;
@@ -318,7 +318,6 @@ int main(int argc, char** argv) {
     
     gettimeofday(&t0,NULL);
     while (frameidx >= 0 and frameidx < dcnt) {
-	cout << fram
         gettimeofday(&t1,NULL);
         frame_orig = imread(indirname + "/" + dlist[frameidx]);  //get one frame form video
         if(! frame_orig.data ) {
