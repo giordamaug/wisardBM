@@ -33,7 +33,6 @@ namespace cv {
     static const double defaultVarThreshold = 0.75;
     static const double defaultVarWatermark = 0.0;
     static const double defaultVarUpWatermark = 50.0;
-    static const int defaultSelectThreshold = 2;
     static const int defaultLearningStage = 0;
 
     class BackgroundSubtractorWISImpl : public BackgroundSubtractorWIS {
@@ -46,7 +45,6 @@ namespace cv {
             double trainDecr;
             double varThreshold;
             double varWatermark;
-            int selectThreshold;
             int learningStage;
             wvalue_t varUpWatermark;
             int frameNum_;
@@ -61,7 +59,6 @@ namespace cv {
                 dimTics = (int) (256 / noTics);
                 trainIncr = defaultTrainIncr;
                 trainDecr = defaultTrainDecr;
-                selectThreshold = defaultSelectThreshold;
                 varThreshold = defaultVarThreshold;
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
@@ -75,7 +72,6 @@ namespace cv {
                 dimTics = (int) (256 / noTics);
                 trainIncr = defaultTrainIncr;
                 trainDecr = defaultTrainDecr;
-                selectThreshold = defaultSelectThreshold;
                 varThreshold = defaultVarThreshold;
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
@@ -89,7 +85,6 @@ namespace cv {
                 noTics = nt;
                 trainIncr = defaultTrainIncr;
                 trainDecr = defaultTrainDecr;
-                selectThreshold = defaultSelectThreshold;
                 varThreshold = defaultVarThreshold;
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
