@@ -33,7 +33,6 @@ namespace cv {
     static const double defaultVarThreshold = 0.75;
     static const double defaultVarWatermark = 0.0;
     static const double defaultVarUpWatermark = 50.0;
-    static const int defaultLearningStage = 0;
 
     class BackgroundSubtractorWISImpl : public BackgroundSubtractorWIS {
         public:
@@ -63,7 +62,6 @@ namespace cv {
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
                 cacheSize = defaultCacheSize;
-                learningStage = defaultLearningStage;
                 hits = misses = tcount = 0;
             }
             BackgroundSubtractorWISImpl(cv::Size fsize, int ftype) {
@@ -76,7 +74,6 @@ namespace cv {
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
                 cacheSize = defaultCacheSize;
-                learningStage = defaultLearningStage;
                 hits = misses = tcount = 0;
                 initialize(fsize, ftype);
             }
@@ -89,7 +86,6 @@ namespace cv {
                 varWatermark = defaultVarWatermark;
                 varUpWatermark = defaultVarUpWatermark;
                 cacheSize = defaultCacheSize;
-                learningStage = defaultLearningStage;
                 hits = misses = tcount = 0;
                 initialize(fsize, ftype);
             }
@@ -161,7 +157,6 @@ namespace cv {
                 //cout << left << setw(fldsize) << setfill(' ') << "Classification Thresh: " << varThreshold << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Watermark: " << varWatermark << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Uppermark: " << varUpWatermark << endl;
-                cout << left << setw(fldsize) << setfill(' ') << "LearningStage: " << learningStage << endl;
                 cout << left << setw(fldsize) << setfill(' ') << "Cachesize: " << cacheSize << endl;
                 ++frameNum_;
             }
@@ -214,14 +209,11 @@ namespace cv {
             virtual void setVarWatermark(double _mark) { varWatermark = _mark; }
             virtual double getVarUpWatermark() const { return varUpWatermark; };
             virtual void setVarUpWatermark(double _mark) { varUpWatermark = _mark; }
-            virtual int getLearningStage() const { return learningStage; };
-            virtual void setLearningStage(int _lsize) { learningStage = _lsize; }
             virtual int getDimTics() const { return dimTics; };
             void set(const String& name, int value) {
                 if (name == "noBits") setNoBits(value);
                 else if (name == "noTics") setNoTics(value);
                 else if (name == "cacheSize") setCacheSize(value);
-                else if (name == "learningStage") setLearningStage(value);
             } ;
             void set(const String& name, double value) {
                 if (name == "trainIncr") setTrainIncr(value);
@@ -236,7 +228,6 @@ namespace cv {
                 else if (name == "noRams") getNoRams();
                 else if (name == "dimTics") getDimTics();
                 else if (name == "cacheSize") getCacheSize();
-                else if (name == "learningStage") getLearningStage();
             } ;
             double getDouble(const String& name) {
                 if (name == "trainIncr") return getTrainIncr();
