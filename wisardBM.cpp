@@ -281,7 +281,6 @@ int main(int argc, char** argv) {
     Subtractor->set("varWatermark", watermarkArg.getValue());
     //Subtractor->set("varThreshold", threshArg.getValue());
     Subtractor->set("varUpWatermark", uppermarkArg.getValue());
-    Subtractor->set("learningStage", learnArg.getValue());
     Subtractor->initialize(frame.size(), frame.type());
     //*/
     if (verboseSwitch.isSet()) {
