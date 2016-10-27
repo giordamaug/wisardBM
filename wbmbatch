@@ -1,0 +1,216 @@
+wis!/bin/bash
+INPUTDIR="../SBMnet_dataset"
+OUTPUTDIR="../cwwisardBM_results"
+executable="wisardBM"
+drange="0:10000"
+
+# COPY FROM HERE ...
+#prefix=("backgroundMotion")
+#samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+#size=${#samples[@]}
+#echo
+
+#for ((i =0; i < $size ; i++))
+#do
+#    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+#    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+#    eval "${command}"
+#    echo "Done"
+#    echo
+#done
+# COPY FROM HERE ...
+prefix=("basic")
+samples=("511" "Hybrid" "Intersection" "highway" "Blurred" "IPPR2" "MPEG4_40" "skating" "CamouflageFgObjects" "I_SI_01" "PETS2006" "streetCornerAtNight" "ComplexBackground" "IntelligentRoom" "fluidHighway" "wetSnow")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("clutter")
+samples=("Board" "Foliage" "ICRA3" "People\&Foliage" "boulevardJam" "tramway Crowded" "" "HumanBody2" "IndianTraffic3" "UCF-fishes" "groupCampus")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("illuminationChanges")
+samples=("CameraParameter" "Dataset3Camera1" "Dataset3Camera2" "I_IL_01" "I_IL_02" "cubicle")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("intermittentMotion")
+samples=("AVSS2007" "Candela_m1.10" "I_CA_02" "I_MB_02" "UCF-traffic" "busStation" "office" "streetCorner" "CaVignal" "I_CA_01" "I_MB_01" "Teknomo" "Uturn" "copyMachine" "sofa" "tramstop")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("jitter")
+samples=("CMU" "I_SM_04" "O_SM_04" "boulevard" "traffic" "I_MC_02" "O_MC_02" "badminton" "sidewalk")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("veryLong")
+samples=("BusStopMorning" "Dataset4Camera1" "PedAndStorrowDrive" "PedAndStorrowDrive3" "Terrace")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("veryShort")
+samples=("CUHK_Square" "MIT" "Toscana" "TwoLeaveShop1cor" "peopleInShade" "DynamicBackground" "NoisyNight" "TownCentre" "pedestrians" "snowFall")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
+# COPY FROM HERE ...
+prefix=("backgroundMotion")
+samples=("advertisementBoard" "canoe" "fall" "fountain01" "fountain02" "overpass")
+size=${#samples[@]}
+echo
+
+for ((i =0; i < $size ; i++))
+do
+    echo "working on: " $INPUTDIR/$prefix/${samples[i]}
+    command="./${executable} -d $INPUTDIR/$prefix/${samples[i]}/input/ -o $OUTPUTDIR/$prefix/${samples[i]}/RESULT_background.jpg"
+    eval "${command}"
+    echo "Done"
+    echo
+done
