@@ -21,7 +21,7 @@ changes during the video timeline.
 Citation Details
 ----------------------
   
-This work is the subject of an article to be sumbitted to the Elsevier journal "NeuroComputing".
+This work is the subject of an article to be submitted to the Elsevier Journal "NeuroComputing".
  
 At the current time, when using this source code please reference this work by citing the following
 paper which deals with a previous version of this software:
@@ -32,7 +32,7 @@ Plain Text:
 
  M. De Gregorio, M. Giordano.
  Background Modeling by Weightless Neural Networks.
- in "New Trends in Image Analysis and Processing - ICIAP 2015 Workshops", 
+ In "New Trends in Image Analysis and Processing - ICIAP 2015 Workshops", 
  Volume 9281 of the series Lecture Notes in Computer Science, pp 493-501.
  Springer Verlag, http://dx.doi.org/10.1007/978-3-319-23222-5_60 
  
