@@ -21,6 +21,11 @@ changes during the video timeline.
 Citation Details
 ----------------------
   
+This work is the subject of an article to be sumbitted to the Elsevier journal "NeuroComputing".
+ 
+At the current time, when using this source code please reference this work by citing the following
+paper which deals with a previous version of this software:
+
 Please cite the following journal article when using this source code:
 
 Plain Text:
